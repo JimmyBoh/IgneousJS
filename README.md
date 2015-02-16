@@ -1,66 +1,12 @@
 # igneous.js
 
-A fully featured implementation for OOP in javascript (ES5) for the browser or NodeJS.
+A fully featured ES5 implementation for OOP in javascript for the browser or NodeJS.
 
 ## Usage:
 
-```js
-// Enums #############################
+_Coming Soon!_
 
-var Color = Enum.extend('Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet');
-
-var myFavoriteColor = Color.Yellow; // myFavoriteColor === 2
-alert(Color[myFavoriteColor])       // will display "Yellow"
-
-var Direction = Enum.extend({
-  'North': 0,
-  'South': 1,
-  'East': 2,
-  'West': 4
-});
-
-var myHeading = Direction.North | Direction.East; // Sets the value to NorthEast
-alert(Enum.hasFlag(myHeading, Direction.North));  // Returns true!
-
-
-// Classes ###########################
-
-var Animal = Class.extend({
-  init: function(name){
-    this.name = name;
-  },
-  move(meters) {
-    alert(this.name + ' moved ' + meters + 'm.');
-  }
-});
-
-var Snake = Animal.extend({
- init: function(name){
-   this._super(name)
- },
- move() {
-   alert("Slithering...");
-   this._super.move(5);
- }
-});
-
-var Horse = Animal.extend({
- init: function(name){
-   this._super(name)
- },
- move() {
-   alert("Galloping...");
-   this._super.move(45);
- }
- 
- var sam = new Snake("Sammy the Python");
- var tom = new Horse("Tommy the Palomino");
- 
- sam.move();
- tom.move(34);
-});
-
-```
+In the mean time please check out the tests for [enums](https://github.com/JimmyBoh/igneous/tree/master/spec/enum.spec.js) and [classes](https://github.com/JimmyBoh/igneous/tree/master/spec/class.spec.js)!
 
 ## API
 
