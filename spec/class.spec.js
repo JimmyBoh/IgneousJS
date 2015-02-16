@@ -21,11 +21,11 @@ describe('Class Tests', function () {
     var Child = Parent.extend({});
     var Grandchild = Child.extend({});
     
-    var grandChild = new Grandchild();
+    var grandchild = new Grandchild();
     
-    expect(grandChild instanceof Parent).toBe(true);
-    expect(grandChild instanceof Child).toBe(true);
-    expect(grandChild instanceof Grandchild).toBe(true);
+    expect(grandchild instanceof Parent).toBe(true);
+    expect(grandchild instanceof Child).toBe(true);
+    expect(grandchild instanceof Grandchild).toBe(true);
     
   });
 

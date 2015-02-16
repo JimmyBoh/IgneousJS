@@ -59,6 +59,19 @@ describe('Enum Tests', function () {
       expect(Direction[dir]).toBe(enumValues[dir]);
     }
   });
+
+  it('should be an instance of `Enum` type', function () {
+    var enumValues = [
+      'North',
+      'South',
+      'East',
+      'West'
+    ];
+
+    var Direction = Enum.extend(enumValues);
+
+    expect(Direction instanceof Enum).toBe(true);
+  });
   
   it('should treat entries as integers', function () {
 
