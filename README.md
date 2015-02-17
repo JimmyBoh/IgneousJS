@@ -11,7 +11,7 @@ The main goal of this library is to provide a small but powerful implementation 
 ### NPM:
 
 ```
-npm install igneousjs
+npm install --save igneousjs
 ```
 
 ### Bower:
