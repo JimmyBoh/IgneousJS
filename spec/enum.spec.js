@@ -2,16 +2,33 @@
  * Created by Jim Buck on 2/16/2015.
  */
 
-describe('Enum Tests', function () {
+describe('The `Enum` implementation', function () {
   
-  var Enum = require('../dist/igneous.js').Enum;
+  var Enum;
+  
+  if(typeof window !== 'undefined'){
+    Enum = window.Enum;
+  } else{
+    Enum = require('../tmp/igneous.min.js').Enum;
+  }
   
   it('should provide a method to extend the `Enum` type', function(){
     
-    // TODO: Maybe make this much more thorough???
+    var Switch = Enum.extend('On', 'Off');
     
-    expect(typeof Enum.extend).toBe('function');
+    expect(Switch instanceof Enum).toBe(true);
   });
+  
+  it('should not allow Enums to extend other Enums', function(){
+    var Switch = Enum.extend('On', 'Off');
+    var Dimmer;
+    
+    function tryExtendEnum(){
+      Dimmer = Switch.extend('On', 'Kinda Bright', 'Kinda Dim', 'Off');
+    }
+    
+    expect(tryExtendEnum).toThrow();
+  })
   
   it('should accept multiple strings as parameters', function(){
     var enumValues = [

@@ -4,7 +4,10 @@ var wrap = require('gulp-wrap');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglifyjs');
+var karma = require('karma').server;
 var jasmine = require('gulp-jasmine');
+
+var path = require('path');
 
 var config = {
   appName: require('./package.json').name,
@@ -52,15 +55,35 @@ gulp.task('build', ['clean'], function () {
     .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('test', ['build:test'], function () {
+gulp.task('test:node', ['build:test'], function () {
   return gulp.src([
     config.test + '/**/*[sS]pec.js'
   ])
-    .pipe(jasmine());
+    .pipe(jasmine({
+      verbose: true,
+      includeStackTrace: true
+    }));
 });
+
+gulp.task('test:browser', ['build:test'], function (done) {
+  karma.start({
+    configFile: path.join(__dirname, config.test + '/karma.conf.js'),
+    singleRun: true
+  }, done);
+});
+
+gulp.task('test:sauce', ['build:test'], function (done) {
+  karma.start({
+    configFile: path.join(__dirname, config.test + '/karma.conf-ci.js'),
+    singleRun: true
+  }, done);
+});
+
+gulp.task('test', ['build:test','test:node', 'test:browser']);
+gulp.task('test:ci', ['build:test', 'test:node', 'test:sauce']);
 
 gulp.task('watch-test', function () {
   gulp.watch([config.src + '/**', config.test + '/**'], ['test']);
 });
 
-gulp.task('default', ['watch-test'], function(){});
+gulp.task('default', ['watch-test']);

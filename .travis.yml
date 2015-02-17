@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - '0.10'
+  - '0.11'
+  - '0.12'
+
+before_install:
+  - npm install -g gulp karma-cli
+
+install:
+  - npm install
+
+env:
+  global:
+    - secure: nmQJ8lyK+uJ2JGArnEnDJ3Y007zUiSr53fLAylGEsErScUvXHXvAPU8ptIczhUkJgH2d6r4iLXWPuo+TbFFLUGfBeyv0x4tQ4DCP+aVYU/8JB2sF8ycNkAZ5XsmrQH8D/EKhpmW+8Oxty3y5yqRlYZ6GTG5OKp9fi/7r7kksyEI=
+    - secure: qY4Fr21QhiQa1THWky/l7dI/Yw3jsiHaMRb0PxDY6vH7qUJasMsCmz44D3tg/uFZDkckVCCmoNwMDHQpy3BKCq/1EFUoxqMRq+Pm3NS8ThyEUBSpM6oy/YSFqg/njjVL7QbAn++oR5G6qxBZU2y5eGcTZXT5Fi3IiMPsfzrye7Y=
+addons:
+  sauce_connect: true
+  
+notifications:
+  email: false # disable the 8 billion email notifications...

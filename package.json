@@ -1,6 +1,6 @@
 {
   "name": "igneous",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Jim Buck <jim@jimmyboh.com>",
   "contributors": [
     {
@@ -8,6 +8,9 @@
       "email": "jeresig@gmail.com"
     }
   ],
+  "scripts": {
+    "test":"gulp test:ci"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/JimmyBoh/igneous.git"
@@ -30,6 +33,13 @@
     "gulp-jasmine": "^2.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-uglifyjs": "^0.6.0",
-    "gulp-wrap": "^0.11.0"
+    "gulp-wrap": "^0.11.0",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sauce-launcher": "^0.2.10"
   }
 }

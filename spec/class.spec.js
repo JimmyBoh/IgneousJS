@@ -2,9 +2,15 @@
  * Created by Jim on 2/16/2015.
  */
 
-describe('Class Tests', function () {
+describe('The `Class` implementation', function () {
 
-  var Class = require('../dist/igneous.js').Class;
+  var Class;
+
+  if (typeof window !== 'undefined') {
+    Class = window.Class;
+  } else {
+    Class = require('../tmp/igneous.min.js').Class;
+  }
 
   it('should allow extending from the `Class` type', function () {
     expect(typeof Class.extend).toBe('function');
