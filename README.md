@@ -2,9 +2,11 @@
 
 A fully featured ES5 implementation for OOP in javascript for the browser or NodeJS.
 
+The main goal of this library is to provide a small but powerful implementation of Object Oriented constructs in JavaScript (ES5). With ES6 on the way, this library is meant to bridge the gap by using as close to the correct syntax as possible.
+
 ## Usage:
 
-_Coming Soon!_
+_Detailed Examples Coming Soon!_
 
 In the mean time please check out the tests for [enums](https://github.com/JimmyBoh/igneous/tree/master/spec/enum.spec.js) and [classes](https://github.com/JimmyBoh/igneous/tree/master/spec/class.spec.js)!
 
@@ -26,7 +28,7 @@ Creates a new enum from an object hash.
  
 Creates a new enum from an array of strings.
 
-#### `<enum> Enum.extend(str1, str2, ...)`
+#### `Enum.extend(str1, str2, ...)`
  - Returns: `Enum`,
  - Accepts: 
   - `str`: `String` (one or many)
@@ -47,8 +49,8 @@ Returns the string value (key) based on the enum value (integer).
  - Accepts: 
   - `obj`: `Object`
 
-Creates a new Class type. `obj` requires an `init` function to act as the constructor. 
-Each method will be run in the context of the class instance, exposing a `_super` method that calls the parent instance of the current function.
+Creates a new Class type. `obj` accepts a `constructor` function to act as the constructor. 
+Each method will be run in the context of the class instance, exposing a `super` method that calls the parent instance of the current function.
  
 See [John Resig's original blog post][2] for more information. 
 
@@ -59,7 +61,7 @@ See [John Resig's original blog post][2] for more information.
 
 This is the same as `Class.extend`, but may be called on any class implementation created using igneous.
 
-## Inpsired By:
+## Inspired By:
 
 **Simple JavaScript Inheritance**
 By [John Resig][1]
@@ -71,6 +73,10 @@ MIT Licensed.
 By Microsoft (et al.)
 [GitHub Project][3]
 [TypeScriptLang.org][4]
+
+## License:
+
+See [LICENSE](https://github.com/JimmyBoh/igneous/blob/master/LICENSE) for more information.
 
 [1]: http://ejohn.org/
 [2]: http://ejohn.org/blog/simple-javascript-inheritance/

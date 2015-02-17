@@ -16,8 +16,24 @@ var config = {
 
 gulp.task('clean', function (cb) {
   del([
+    config.tmp + '/**',
     config.dist + '/**'
   ], cb);
+});
+
+gulp.task('build:test', ['clean'], function () {
+  return gulp.src(
+    [
+      config.src + '/enum.js',
+      config.src + '/class.js'
+    ])
+    .pipe(concat(config.appName + '.js'))
+    .pipe(wrap({src: config.src + '/wrap-template.js'}))
+    .pipe(rename(config.appName + '.min.js'))
+    .pipe(uglify({
+      outSourceMap: true
+    }))
+    .pipe(gulp.dest(config.tmp));
 });
 
 gulp.task('build', ['clean'], function () {
@@ -28,11 +44,7 @@ gulp.task('build', ['clean'], function () {
     ])
     .pipe(concat(config.appName + '.js'))
     .pipe(wrap({src: config.src + '/wrap-template.js'}))
-    .pipe(gulp.dest(config.dist));
-});
-
-gulp.task('build:min', ['build'], function () {
-  return gulp.src(config.dist + '/' + config.appName + '.js')
+    .pipe(gulp.dest(config.dist))
     .pipe(rename(config.appName + '.min.js'))
     .pipe(uglify({
       outSourceMap: true
@@ -40,7 +52,7 @@ gulp.task('build:min', ['build'], function () {
     .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('test', ['build'], function () {
+gulp.task('test', ['build:test'], function () {
   return gulp.src([
     config.test + '/**/*[sS]pec.js'
   ])
@@ -48,5 +60,7 @@ gulp.task('test', ['build'], function () {
 });
 
 gulp.task('watch-test', function () {
-  gulp.watch([+config.src + '/**', config.test + '/**'], ['test']);
+  gulp.watch([config.src + '/**', config.test + '/**'], ['test']);
 });
+
+gulp.task('default', ['watch-test'], function(){});

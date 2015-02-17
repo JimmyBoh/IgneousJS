@@ -31,7 +31,7 @@ describe('Class Tests', function () {
 
   it('should run the `init` function as the constructor.', function(){
     var InitTester = Class.extend({
-      init: function () {
+      constructor: function () {
         this.initRan = true;
       }
     });
@@ -41,9 +41,9 @@ describe('Class Tests', function () {
     expect(tester.initRan).toBe(true);
   });
 
-  it('should give the ability to run parent methods through the `this._super` call', function(){
+  it('should give the ability to run parent methods through the `this.super` call', function(){
     var Parent = Class.extend({
-      init: function () {
+      constructor: function () {
         this.calls = 0;
       },
       act: function () {
@@ -52,21 +52,21 @@ describe('Class Tests', function () {
     });
 
     var Child = Parent.extend({
-      init: function () {
-        this._super();
+      constructor: function () {
+        this.super();
       },
       act: function () {
-        this._super();
+        this.super();
         this.calls++;
       }
     });
 
     var Grandchild = Child.extend({
-      init: function () {
-        this._super();
+      constructor: function () {
+        this.super();
       },
       act: function () {
-        this._super();
+        this.super();
         this.calls++;
       }
     });
@@ -77,5 +77,4 @@ describe('Class Tests', function () {
     
     expect(grandchild.calls).toBe(3);
   });
-
 });
