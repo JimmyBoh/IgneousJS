@@ -28,5 +28,4 @@ node_modules
 .lock-wscript
 
 # unused gulp stuff
-dist/
 tmp/
