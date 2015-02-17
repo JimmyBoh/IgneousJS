@@ -6,6 +6,18 @@ A fully featured ES5 implementation for OOP in javascript for the browser or Nod
 
 The main goal of this library is to provide a small but powerful implementation of Object Oriented constructs in JavaScript (ES5). With ES6 on the way, this library is meant to bridge the gap by using as close to the correct syntax as possible.
 
+## Installation:
+
+### NPM:
+
+```
+npm install igneousjs
+```
+
+### Bower:
+
+_Coming Soon!_ (If you need it NOW then just grab the files from the `dist` folder!)
+
 ## Usage:
 
 _Detailed Examples Coming Soon!_
