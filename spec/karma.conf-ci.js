@@ -17,7 +17,8 @@ module.exports = function (config) {
     },
     'SL_Safari': {
       base: 'SauceLabs',
-      browserName: 'safari'
+      browserName: 'safari',
+      platform: 'OS X 10.10'
     },
     'SL_Firefox': {
       base: 'SauceLabs',
@@ -26,58 +27,61 @@ module.exports = function (config) {
     'SL_IE9': {
       base: 'SauceLabs',
       browserName: 'internet explorer',
-      version: '9'
+      version: '9.0',
+      platform: 'Windows 7'
     },
     'SL_IE10': {
       base: 'SauceLabs',
       browserName: 'internet explorer',
-      version: '10'
+      version: '10.0',
+      platform: 'Windows 7'
     },
     'SL_IE11': {
       base: 'SauceLabs',
       browserName: 'internet explorer',
-      version: '11'
-    },
-    'SL_iPhone_7': {
-      base: 'SauceLabs',
-      browserName: 'iphone',
-      platform: 'OS X 10.10',
-      version: '7.1',
-      deviceName: 'iPhone Simulator',
-      'device-orientation': 'portrait'
-    },
-    'SL_iPhone_8': {
-      base: 'SauceLabs',
-      browserName: 'iphone',
-      platform: 'OS X 10.10',
-      version: '8.1',
-      deviceName: 'iPhone Simulator',
-      'device-orientation': 'portrait'
-    },
-    'SL_Android_4.2': {
-      base: 'SauceLabs',
-      browserName: 'android',
-      platform: 'Linux',
-      version: '4.2',
-      deviceName: 'Android Emulator',
-      'device-orientation': 'portrait'
-    },
-    'SL_Android_4.3': {
-      base: 'SauceLabs',
-      browserName: 'android',
-      platform: 'Linux',
-      version: '4.3',
-      deviceName: 'Android Emulator',
-      'device-orientation': 'portrait'
-    },
-    'SL_Android_4.4': {
-      base: 'SauceLabs',
-      browserName: 'android',
-      platform: 'Linux',
-      version: '4.4',
-      deviceName: 'Android Emulator',
-      'device-orientation': 'portrait'
+      version: '11.0',
+      platform: 'Windows 8.1'
     }
+    //,'SL_iPhone_7': {
+    //  base: 'SauceLabs',
+    //  browserName: 'iphone',
+    //  platform: 'OS X 10.10',
+    //  version: '7.1',
+    //  deviceName: 'iPhone Simulator',
+    //  'device-orientation': 'portrait'
+    //},
+    //'SL_iPhone_8': {
+    //  base: 'SauceLabs',
+    //  browserName: 'iphone',
+    //  platform: 'OS X 10.10',
+    //  version: '8.1',
+    //  deviceName: 'iPhone Simulator',
+    //  'device-orientation': 'portrait'
+    //},
+    //'SL_Android_4.2': {
+    //  base: 'SauceLabs',
+    //  browserName: 'android',
+    //  platform: 'Linux',
+    //  version: '4.2',
+    //  deviceName: 'Android Emulator',
+    //  'device-orientation': 'portrait'
+    //},
+    //'SL_Android_4.3': {
+    //  base: 'SauceLabs',
+    //  browserName: 'android',
+    //  platform: 'Linux',
+    //  version: '4.3',
+    //  deviceName: 'Android Emulator',
+    //  'device-orientation': 'portrait'
+    //},
+    //'SL_Android_4.4': {
+    //  base: 'SauceLabs',
+    //  browserName: 'android',
+    //  platform: 'Linux',
+    //  version: '4.4',
+    //  deviceName: 'Android Emulator',
+    //  'device-orientation': 'portrait'
+    //}
   };
 
   config.set({
