@@ -16,7 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../src/**/*.js',
+      '../tmp/igneous.min.js',
       '../spec/**/*[sS]pec.js'
     ],
 

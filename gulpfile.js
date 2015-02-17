@@ -2,8 +2,8 @@ var gulp = require('gulp');
 var del = require('del');
 var wrap = require('gulp-wrap');
 var concat = require('gulp-concat');
-var rename = require('gulp-rename');
 var uglify = require('gulp-uglifyjs');
+
 var karma = require('karma').server;
 var jasmine = require('gulp-jasmine');
 
@@ -24,7 +24,7 @@ gulp.task('clean', function (cb) {
   ], cb);
 });
 
-gulp.task('build:test', ['clean'], function () {
+function uglifyWithSourceMaps(destPath){
   return gulp.src(
     [
       config.src + '/enum.js',
@@ -32,30 +32,28 @@ gulp.task('build:test', ['clean'], function () {
     ])
     .pipe(concat(config.appName + '.js'))
     .pipe(wrap({src: config.src + '/wrap-template.js'}))
-    .pipe(rename(config.appName + '.min.js'))
-    .pipe(uglify({
-      outSourceMap: true
+    .pipe(gulp.dest(destPath))
+    .pipe(uglify(config.appName + '.min.js', {
+      outSourceMap: true,
+      basePath: destPath,
+      output: {
+        source_map: {
+          root: '/'
+        }
+      }
     }))
-    .pipe(gulp.dest(config.tmp));
+    .pipe(gulp.dest(destPath));
+}
+
+gulp.task('build:tmp', ['clean'], function () {
+  return uglifyWithSourceMaps(config.tmp);
 });
 
-gulp.task('build', ['clean'], function () {
-  return gulp.src(
-    [
-      config.src + '/enum.js',
-      config.src + '/class.js'
-    ])
-    .pipe(concat(config.appName + '.js'))
-    .pipe(wrap({src: config.src + '/wrap-template.js'}))
-    .pipe(gulp.dest(config.dist))
-    .pipe(rename(config.appName + '.min.js'))
-    .pipe(uglify({
-      outSourceMap: true
-    }))
-    .pipe(gulp.dest(config.dist));
+gulp.task('build', ['clean', 'build:tmp'], function () {
+  return uglifyWithSourceMaps(config.dist);
 });
 
-gulp.task('test:node', ['build:test'], function () {
+gulp.task('test:node', ['build:tmp'], function () {
   return gulp.src([
     config.test + '/**/*[sS]pec.js'
   ])
@@ -65,22 +63,22 @@ gulp.task('test:node', ['build:test'], function () {
     }));
 });
 
-gulp.task('test:browser', ['build:test'], function (done) {
+gulp.task('test:browser', ['build:tmp'], function (done) {
   karma.start({
     configFile: path.join(__dirname, config.test + '/karma.conf.js'),
     singleRun: true
   }, done);
 });
 
-gulp.task('test:sauce', ['build:test'], function (done) {
+gulp.task('test:sauce', ['build:tmp'], function (done) {
   karma.start({
     configFile: path.join(__dirname, config.test + '/karma.conf-ci.js'),
     singleRun: true
   }, done);
 });
 
-gulp.task('test', ['build:test','test:node', 'test:browser']);
-gulp.task('test:ci', ['build:test', 'test:node', 'test:sauce']);
+gulp.task('test', ['build:tmp','test:node', 'test:browser']);
+gulp.task('test:ci', ['build:tmp', 'test:node', 'test:sauce']);
 
 gulp.task('watch-test', function () {
   gulp.watch([config.src + '/**', config.test + '/**'], ['test']);
