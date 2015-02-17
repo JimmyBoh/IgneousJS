@@ -12,10 +12,8 @@ install:
 
 env:
   global:
-    - secure: nmQJ8lyK+uJ2JGArnEnDJ3Y007zUiSr53fLAylGEsErScUvXHXvAPU8ptIczhUkJgH2d6r4iLXWPuo+TbFFLUGfBeyv0x4tQ4DCP+aVYU/8JB2sF8ycNkAZ5XsmrQH8D/EKhpmW+8Oxty3y5yqRlYZ6GTG5OKp9fi/7r7kksyEI=
-    - secure: qY4Fr21QhiQa1THWky/l7dI/Yw3jsiHaMRb0PxDY6vH7qUJasMsCmz44D3tg/uFZDkckVCCmoNwMDHQpy3BKCq/1EFUoxqMRq+Pm3NS8ThyEUBSpM6oy/YSFqg/njjVL7QbAn++oR5G6qxBZU2y5eGcTZXT5Fi3IiMPsfzrye7Y=
-addons:
-  sauce_connect: true
+    - secure: rbOocOyXXZI/bwMzl9upPJY1BZl+9xrL5Tyq58PW1j3jpmDksNlwwITBNhaubyWSceW4RE8/rC0tKHc14TuHXIonFgG+Fr3icv4bDdw43vJNz8ev1FRB1qp4uusWqq/CjGXZWiJ+sOQUs6PqabjK3W8SZHH7Fy1KvsgJJ2jhLf4=
+    - secure: RMj4JZExuMQqG0OgtTxNL4uCU3vA5AZmTLotaatjySoVSr75yfb+ZyEVuFL3OcEhNebtKcDJ9GOTP6EQpUV8Mv9pDKOjmr/x1+CfhG1vWZYbR8qYSAa+//AQC28NSN8BbCKZM6UfnH4T9l7wFD7j9/o2cvQlua6Q68exFhFm/L4=
   
 notifications:
   email: false # disable the 8 billion email notifications...
