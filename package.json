@@ -1,6 +1,6 @@
 {
-  "name": "igneous",
-  "version": "0.0.2",
+  "name": "IgneousJS",
+  "version": "0.1.0",
   "author": "Jim Buck <jim@jimmyboh.com>",
   "contributors": [
     {
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JimmyBoh/igneous.git"
+    "url": "https://github.com/JimmyBoh/IgneousJS.git"
   },
   "bugs": {
-    "url": "https://github.com/JimmyBoh/igneous/issues"
+    "url": "https://github.com/JimmyBoh/IgneousJS/issues"
   },
   "keywords": [
     "enum",

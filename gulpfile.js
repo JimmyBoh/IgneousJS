@@ -10,7 +10,7 @@ var jasmine = require('gulp-jasmine');
 var path = require('path');
 
 var config = {
-  appName: require('./package.json').name,
+  appName: 'igneous',
   dist: './dist',
   test: './spec',
   src: './src',

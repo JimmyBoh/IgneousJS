@@ -1,6 +1,8 @@
-# igneous.js
+# IgneousJS
 
-A fully featured ES5 implementation for OOP in javascript for the browser or NodeJS.
+[![Build Status](https://travis-ci.org/JimmyBoh/IgneousJS.svg?branch=master)](https://travis-ci.org/JimmyBoh/IgneousJS)
+
+A fully featured ES5 implementation for OOP in javascript for the browser or NodeJS!
 
 The main goal of this library is to provide a small but powerful implementation of Object Oriented constructs in JavaScript (ES5). With ES6 on the way, this library is meant to bridge the gap by using as close to the correct syntax as possible.
 
