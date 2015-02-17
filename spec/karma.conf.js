@@ -1,54 +1,7 @@
 // Karma configuration
 // Generated on Mon Feb 16 2015 22:26:59 GMT-0500 (Eastern Standard Time)
 
-module.exports = function(config) {
-  
-  // Use ENV vars on Travis and sauce.json locally to get credentials
-  if (!process.env.SAUCE_USERNAME) {
-    throw new Error('Set values for SAUCE_USERNAME and SAUCE_ACCESS_KEY!');
-    process.exit(1);
-  }
-
-  // Browsers to run on Sauce Labs
-  var customLaunchers = {
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome'
-    },
-    'SL_Safari': {
-      base: 'SauceLabs',
-      browserName: 'safari'
-    },
-    'SL_Firefox': {
-      base: 'SauceLabs',
-      browserName: 'firefox'
-    },
-    'SL_IE7': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '7'
-    },
-    'SL_IE8': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '8'
-    },
-    'SL_IE9': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '9'
-    },
-    'SL_IE10': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '10'
-    },
-    'SL_IE11': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '11'
-    }
-  };
+module.exports = function(config) {  
   
   config.set({
 
@@ -83,8 +36,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'dots'],
-
-
+    
     // web server port
     port: 9876,
 

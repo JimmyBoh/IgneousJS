@@ -10,7 +10,7 @@ module.exports = function (config) {
   }
 
   // Browsers to run on Sauce Labs
-  var customLaunchers = {
+  var modernBrowsers = {
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome'
@@ -22,16 +22,6 @@ module.exports = function (config) {
     'SL_Firefox': {
       base: 'SauceLabs',
       browserName: 'firefox'
-    },
-    'SL_IE7': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '7'
-    },
-    'SL_IE8': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '8'
     },
     'SL_IE9': {
       base: 'SauceLabs',
@@ -47,6 +37,46 @@ module.exports = function (config) {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '11'
+    },
+    'SL_iPhone_7': {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      platform: 'OS X 10.10',
+      version: '7.1',
+      deviceName: 'iPhone Simulator',
+      'device-orientation': 'portrait'
+    },
+    'SL_iPhone_8': {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      platform: 'OS X 10.10',
+      version: '8.1',
+      deviceName: 'iPhone Simulator',
+      'device-orientation': 'portrait'
+    },
+    'SL_Android_4.2': {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      version: '4.2',
+      deviceName: 'Android Emulator',
+      'device-orientation': 'portrait'
+    },
+    'SL_Android_4.3': {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      version: '4.3',
+      deviceName: 'Android Emulator',
+      'device-orientation': 'portrait'
+    },
+    'SL_Android_4.4': {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      version: '4.4',
+      deviceName: 'Android Emulator',
+      'device-orientation': 'portrait'
     }
   };
 
@@ -87,12 +117,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
 
     sauceLabs: {
-      testName: 'Igneous Browser Tests'
+      testName: 'IgneousJS Browser Tests'
     },
     captureTimeout: 120000,
-    customLaunchers: customLaunchers,
+    customLaunchers: modernBrowsers,
     
-    browsers: Object.keys(customLaunchers),
+    browsers: Object.keys(modernBrowsers),
 
     // CI mode, run once and exit...
     singleRun: true
