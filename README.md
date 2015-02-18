@@ -14,9 +14,33 @@ The main goal of this library is to provide a small but powerful implementation 
 npm install --save igneousjs
 ```
 
+You can then access it like so:
+
+```js
+
+var ig = require('igneous'),
+  Enum = ig.Enum,
+  Class = ig.Class;
+
+// OR...
+
+var Enum = require('igneousjs/enum');
+var Class = require('igneousjs/class');
+
+```
+
 ### Bower:
 
 _Coming Soon!_ (If you need it NOW then just grab the files from the `dist` folder!)
+
+### Browser (none-bower):
+
+The core files are located [here](https://github.com/JimmyBoh/igneous/tree/master/dist).
+
+Once it is loaded into the webpage, `Class` and `Enum` are available in the global scope!
+
+Using AMD or CommonJS? No problem, it supports all types by default! (thanks to [UMD](https://github.com/umdjs/umd)) 
+
 
 ## Usage:
 
