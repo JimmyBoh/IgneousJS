@@ -1,6 +1,29 @@
-(function () {
+/* IgneousJS
+ * By Jim Buck http://jimmyboh.com/
+ * MIT Licensed
+ * Inspired by John Resig and TypeScript
+ */
 
-  // // Created by Jim Buck on 2/16/2015.
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory();
+  } else {
+    // Browser globals (root is window)
+    var ig = factory();
+    root.Enum = ig.Enum;
+    root.Class = ig.Class;
+  }
+}(this, function () {
+
+  // Gulp has auto-injected the content below: 
+
+// Created by Jim Buck on 2/16/2015.
 
 var Enum = function(){};
 
@@ -45,6 +68,8 @@ Enum.extend = function (obj) {
 Enum.hasFlag = Enum.prototype.hasFlag = function (enumValue, flag) {
   return (enumValue & flag) == flag;
 }
+
+
 /* Simple JavaScript Inheritance
  * By John Resig http://ejohn.org/
  * MIT Licensed.
@@ -117,11 +142,11 @@ Class.extend = function (prop) {
   return Class;
 };
   
-  if (typeof window !== 'undefined') {
-    window.Enum = Enum;
-    window.Class = Class;
-  } else {
-    module.exports.Enum = Enum;
-    module.exports.Class = Class;
-  }
-})();
+  // Just return a value to define the module export.
+  // This example returns an object, but the module
+  // can return a function as the exported value.
+  return {
+    Enum: Enum,
+    Class: Class
+  };
+}));
