@@ -24,7 +24,7 @@ gulp.task('clean', function (cb) {
   ], cb);
 });
 
-function uglifyWithSourceMaps(destPath){
+gulp.task('build', function () {
   return gulp.src(
     [
       config.src + '/enum.js',
@@ -32,28 +32,20 @@ function uglifyWithSourceMaps(destPath){
     ])
     .pipe(concat(config.appName + '.js'))
     .pipe(wrap({src: config.src + '/wrap-template.js'}))
-    .pipe(gulp.dest(destPath))
+    .pipe(gulp.dest(config.dist))
     .pipe(uglify(config.appName + '.min.js', {
       outSourceMap: true,
-      basePath: destPath,
+      basePath: config.dist,
       output: {
         source_map: {
           root: '/'
         }
       }
     }))
-    .pipe(gulp.dest(destPath));
-}
-
-gulp.task('build:tmp', ['clean'], function () {
-  return uglifyWithSourceMaps(config.tmp);
+    .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('build', ['clean', 'build:tmp'], function () {
-  return uglifyWithSourceMaps(config.dist);
-});
-
-gulp.task('test:node', ['build:tmp'], function () {
+gulp.task('test:node', ['build'], function () {
   return gulp.src([
     config.test + '/**/*[sS]pec.js'
   ])
@@ -63,22 +55,22 @@ gulp.task('test:node', ['build:tmp'], function () {
     }));
 });
 
-gulp.task('test:browser', ['build:tmp'], function (done) {
+gulp.task('test:browser', ['build'], function (done) {
   karma.start({
     configFile: path.join(__dirname, config.test + '/karma.conf.js'),
     singleRun: true
   }, done);
 });
 
-gulp.task('test:sauce', ['build:tmp'], function (done) {
+gulp.task('test:sauce', ['build'], function (done) {
   karma.start({
     configFile: path.join(__dirname, config.test + '/karma.conf-ci.js'),
     singleRun: true
   }, done);
 });
 
-gulp.task('test', ['build:tmp','test:node', 'test:browser']);
-gulp.task('test:ci', ['build:tmp', 'test:node', 'test:sauce']);
+gulp.task('test', ['build','test:node', 'test:browser']);
+gulp.task('test:ci', ['build', 'test:node', 'test:sauce']);
 
 gulp.task('watch-test', function () {
   gulp.watch([config.src + '/**', config.test + '/**'], ['test']);

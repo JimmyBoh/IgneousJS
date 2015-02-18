@@ -3,34 +3,28 @@
  */
 
 describe('The `Enum` implementation', function () {
-  
-  var Enum;
-  
-  if(typeof window !== 'undefined'){
-    Enum = window.Enum;
-  } else{
-    Enum = require('../tmp/igneous.min.js').Enum;
-  }
-  
-  it('should provide a method to extend the `Enum` type', function(){
-    
+
+  var Enum = (typeof window !== 'undefined') ? window.Enum : require('../enum.js');
+
+  it('should provide a method to extend the `Enum` type', function () {
+
     var Switch = Enum.extend('On', 'Off');
-    
+
     expect(Switch instanceof Enum).toBe(true);
   });
-  
-  it('should not allow Enums to extend other Enums', function(){
+
+  it('should not allow Enums to extend other Enums', function () {
     var Switch = Enum.extend('On', 'Off');
     var Dimmer;
-    
-    function tryExtendEnum(){
+
+    function tryExtendEnum() {
       Dimmer = Switch.extend('On', 'Kinda Bright', 'Kinda Dim', 'Off');
     }
-    
+
     expect(tryExtendEnum).toThrow();
   })
-  
-  it('should accept multiple strings as parameters', function(){
+
+  it('should accept multiple strings as parameters', function () {
     var enumValues = [
       'North',
       'South',
@@ -45,8 +39,8 @@ describe('The `Enum` implementation', function () {
       expect(Direction[dir]).toBeDefined();
     }
   });
-  
-  it('should accept an array of strings as parameters', function(){
+
+  it('should accept an array of strings as parameters', function () {
     var enumValues = [
       'North',
       'South',
@@ -61,8 +55,8 @@ describe('The `Enum` implementation', function () {
       expect(Direction[dir]).toBeDefined();
     }
   });
-  
-  it('should accept an object map as parameters', function(){
+
+  it('should accept an object map as parameters', function () {
     var enumValues = {
       'North': 0,
       'South': 1,
@@ -89,7 +83,7 @@ describe('The `Enum` implementation', function () {
 
     expect(Direction instanceof Enum).toBe(true);
   });
-  
+
   it('should treat entries as integers', function () {
 
     var enumValues = {
@@ -100,8 +94,8 @@ describe('The `Enum` implementation', function () {
     };
 
     var Direction = Enum.extend(enumValues);
-    
-    for(var dir in enumValues){
+
+    for (var dir in enumValues) {
       expect(Direction[dir]).toBe(enumValues[dir]);
     }
   });
@@ -114,15 +108,15 @@ describe('The `Enum` implementation', function () {
       'East': 2,
       'West': 4
     };
-    
+
     var Direction = Enum.extend(enumValues);
 
-    for(var str in enumValues){
+    for (var str in enumValues) {
       expect(Direction[enumValues[str]]).toBe(str);
     }
   });
-  
-  it('should provide a `toString` method to access string values', function() {
+
+  it('should provide a `toString` method to access string values', function () {
     var enumValues = [
       'North',
       'South',
@@ -137,8 +131,8 @@ describe('The `Enum` implementation', function () {
       expect(Direction.toString(i)).toBe(dir);
     }
   });
-  
-  it('should provide an `Enum.hasFlag` method for easy bitwise checks', function(){
+
+  it('should provide an `Enum.hasFlag` method for easy bitwise checks', function () {
     var enumValues = [
       'North',
       'South',
@@ -155,5 +149,5 @@ describe('The `Enum` implementation', function () {
     expect(Enum.hasFlag(myHeading, Direction.South)).toBe(false);
     expect(Enum.hasFlag(myHeading, Direction.West)).toBe(false);
   });
-  
+
 });

@@ -4,13 +4,7 @@
 
 describe('The `Class` implementation', function () {
 
-  var Class;
-
-  if (typeof window !== 'undefined') {
-    Class = window.Class;
-  } else {
-    Class = require('../tmp/igneous.min.js').Class;
-  }
+  var Class = (typeof window !== 'undefined') ? window.Class : require('../class.js');
 
   it('should allow extending from the `Class` type', function () {
     expect(typeof Class.extend).toBe('function');
@@ -35,16 +29,16 @@ describe('The `Class` implementation', function () {
     
   });
 
-  it('should run the `init` function as the constructor.', function(){
+  it('should run the `constructor` function during construction.', function(){
     var InitTester = Class.extend({
       constructor: function () {
-        this.initRan = true;
+        this.constructorRan = true;
       }
     });
 
     var tester = new InitTester();
     
-    expect(tester.initRan).toBe(true);
+    expect(tester.constructorRan).toBe(true);
   });
 
   it('should give the ability to run parent methods through the `this.super` call', function(){

@@ -1,6 +1,6 @@
 {
   "name": "igneousjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Jim Buck <jim@jimmyboh.com>",
   "contributors": [
     {
@@ -8,9 +8,10 @@
       "email": "jeresig@gmail.com"
     }
   ],
-  "main": "dist/igneous.js",
+  "main": "index.js",
   "scripts": {
-    "test":"gulp test:ci"
+    "prepublish": "node ./node_modules/gulp/bin/gulp test",
+    "test":"node ./node_modules/gulp/bin/gulp test:ci"
   },
   "repository": {
     "type": "git",
