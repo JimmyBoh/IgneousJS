@@ -1,8 +1,10 @@
 # IgneousJS
 
-[![Build Status](https://travis-ci.org/JimmyBoh/IgneousJS.svg?branch=master)](https://travis-ci.org/JimmyBoh/IgneousJS)
-
 A fully featured ES5 implementation for OOP in javascript for the browser or NodeJS!
+
+[![NPM info](https://nodei.co/npm/igneousjs.png?downloads=true)](https://www.npmjs.com/package/igneousjs)
+
+[![Build Status](https://travis-ci.org/JimmyBoh/IgneousJS.svg?branch=master)](https://travis-ci.org/JimmyBoh/IgneousJS)
 
 The main goal of this library is to provide a small but powerful implementation of Object Oriented constructs in JavaScript (ES5). With ES6 on the way, this library is meant to bridge the gap by using as close to the correct syntax as possible.
 
@@ -18,7 +20,7 @@ You can then access it like so:
 
 ```js
 
-var ig = require('igneous'),
+var ig = require('igneousjs'),
   Enum = ig.Enum,
   Class = ig.Class;
 
