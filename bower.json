@@ -1,7 +1,7 @@
 {
   "name": "igneousjs",
   "main": "dist/igneous.js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "homepage": "https://github.com/JimmyBoh/IgneousJS",
   "authors": [
@@ -24,6 +24,11 @@
     "node_modules",
     "bower_components",
     "spec",
-    "src"
+    "src",
+    ".gitignore",
+    "*.js",
+    ".travis.yml",
+    "package.json",
+    "bower.json"
   ]
 }
