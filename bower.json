@@ -1,0 +1,29 @@
+{
+  "name": "IgneousJS",
+  "main": "dist/igneous.js",
+  "version": "0.2.0",
+  "license": "MIT",
+  "homepage": "https://github.com/JimmyBoh/IgneousJS",
+  "authors": [
+    "Jim Buck <jim@jimmyboh.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "enum",
+    "class",
+    "oop",
+    "browser",
+    "node",
+    "object oriented programming"
+  ],
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "spec",
+    "src"
+  ]
+}
