@@ -116,22 +116,6 @@ describe('The `Enum` implementation', function () {
     }
   });
 
-  it('should provide a `toString` method to access string values', function () {
-    var enumValues = [
-      'North',
-      'South',
-      'East',
-      'West'
-    ];
-
-    var Direction = Enum.extend(enumValues);
-
-    for (var i in enumValues) {
-      var dir = enumValues[i];
-      expect(Direction.toString(i)).toBe(dir);
-    }
-  });
-
   it('should provide an `Enum.hasFlag` method for easy bitwise checks', function () {
     var enumValues = [
       'North',

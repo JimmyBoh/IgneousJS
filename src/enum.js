@@ -4,6 +4,13 @@
 
 var Enum = function(){};
 
+// Provides an easy method to check if a flag is set.
+Object.defineProperty(Enum, 'hasFlag', {
+  value: function (enumValue, flag) {
+      return (enumValue & flag) == flag;
+    }
+});
+
 // Used to create a new Enum.
 Enum.extend = function (obj) {
 
@@ -20,28 +27,18 @@ Enum.extend = function (obj) {
   }
 
   // Specify the string/integer values.
-  for (var name in obj) {
-    newEnum[newEnum[name] = obj[name]] = name;
-  }
+  for (var txt in obj) {
+    var val = obj[txt];
 
-  // Add a method to get the string 
-  //   value in a "prettier" way.
-  newEnum.toString = function (enumValue) {
-    if(typeof enumValue === 'string'){
-      if(isNaN(enumValue)){
-        return enumValue;
-      }
-
-      return newEnum[parseInt(enumValue)];
-    }
+    Object.defineProperty(newEnum, txt, {
+      value: val
+    });
     
-    return newEnum[enumValue];
-  };
+    Object.defineProperty(newEnum, val, {
+      enumerable: true,
+      value: txt
+    });
+  }
 
   return newEnum;
 };
-
-// Provides an easy method to check if a flag is set.
-Enum.hasFlag = Enum.prototype.hasFlag = function (enumValue, flag) {
-  return (enumValue & flag) == flag;
-}
