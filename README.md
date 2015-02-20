@@ -10,7 +10,7 @@ The main goal of this library is to provide a small but powerful implementation 
 
 ## Installation:
 
-### NPM:
+### Node.js:
 
 ```
 npm install --save igneousjs
@@ -31,24 +31,118 @@ var Class = require('igneousjs/class');
 
 ```
 
-### Bower:
+### Browser:
 
-_Coming Soon!_ (If you need it NOW then just grab the files from the `dist` folder!)
+#### Using Bower:
 
-### Browser (none-bower):
+```
+bower install igneousjs --save
+```
 
-The core files are located [here](https://github.com/JimmyBoh/igneous/tree/master/dist).
+#### Traditional:
+
+The distributable files are located [here](https://github.com/JimmyBoh/igneous/tree/master/dist).
 
 Once it is loaded into the webpage, `Class` and `Enum` are available in the global scope!
 
 Using AMD or CommonJS? No problem, it supports all types by default! (thanks to [UMD](https://github.com/umdjs/umd)) 
 
-
 ## Usage:
 
-_Detailed Examples Coming Soon!_
+### Enums:
 
-In the mean time please check out the tests for [enums](https://github.com/JimmyBoh/igneous/tree/master/spec/enum.spec.js) and [classes](https://github.com/JimmyBoh/igneous/tree/master/spec/class.spec.js)!
+```
+
+var LightSwitch = Enum.extend('Off', 'On');
+
+var kitchenLight = LightSwitch.On;
+
+console.log(kitchenLight === LightSwitch.On);    // => true
+console.log(kitchenLight);                       // => 1
+console.log(LightSwitch[kitchenLight]);          // => 'On';
+console.log(LightSwitch.toString(kitchenLight)); // => 'On';
+
+
+var Direction = Enum.extend({
+  'North': 1,
+  'South': 2,
+  'East':  4,
+  'West':  8
+});
+
+var myHeading = Direction.North | Direction.East;
+
+console.log(myHeading);            // => 5
+console.log(Direction[myHeading]); // => undefined
+
+console.log(Enum.hasFlag(myHeading, Direction.North)); // => true
+console.log(Enum.hasFlag(myHeading, Direction.West));  // => false
+
+```
+
+### Classes:
+
+```
+
+var Polygon = Class.extend({
+
+  // Class constructor, ran during instantiation.
+  constructor: function (height, width) { 
+    this.name = 'Polygon';
+    this.height = height;
+    this.width = width;
+  },
+
+  // Class method, `this` being the class instance.
+  sayName: function () {
+    console.log('Hi, I am a', this.name + '.');
+  }
+});
+
+var Rectangle = Polygon.extend({
+  constructor: function (height, width) {
+    this.super(height, width); // Call the parent method with `this.super`.
+    this.name = 'Rectangle';
+  },
+
+  area: function () {
+    return this.height * this.width;
+  }
+});
+
+var Square = Rectangle.extend({
+  constructor: function (length) {
+    this.super(length, length);
+    this.name = 'Square';
+  },
+
+  area: function () {
+    return this.super();
+  },
+
+  sayName: function () {
+    this.super(); // This super call overrides Polygon's.
+    console.log('And I\'m way better than a Rectangle!');
+  }
+});
+
+var p = new Polygon(4, 3);
+var r = new Rectangle(2, 5);
+var s = new Square(5);
+
+p.sayName(); // => Hi, I am a Polygon.
+r.sayName(); // => Hi, I am a Rectangle.
+s.sayName(); // => Hi, I am a Square.
+             //    And I'm way better than a Rectangle!
+
+console.log(r.area())  // => 10			 
+console.log(s.area()); // => 25
+
+console.log(s instanceof Rectangle); // => true
+console.log(r instanceof Square); // => false
+
+```
+
 
 ## API
 
@@ -81,6 +175,14 @@ Creates a new enum from a set of strings.
   - `val`: `Integer` (Enum value)
   
 Returns the string value (key) based on the enum value (integer).
+
+#### `Enum.hasFlag(enumValue, flagValue)`
+ - Returns: `Boolean`,
+ - Accepts: 
+  - `enumValue`: `Integer` (Enum Value, your variable)
+  - `flagValue`: `Integer` (Enum Value, the flag to check for)
+  
+Runs a bitwise comparison to see if the enum has a specified flag.
 
 ### Class
 

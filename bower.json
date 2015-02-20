@@ -1,7 +1,7 @@
 {
   "name": "igneousjs",
   "main": "dist/igneous.js",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "MIT",
   "homepage": "https://github.com/JimmyBoh/IgneousJS",
   "authors": [
@@ -24,7 +24,6 @@
     "node_modules",
     "bower_components",
     "spec",
-    "src",
     ".gitignore",
     "gulpfile.js",
     "index.js",
