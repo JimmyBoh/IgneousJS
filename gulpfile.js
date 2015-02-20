@@ -73,7 +73,7 @@ gulp.task('test', ['build','test:node', 'test:browser']);
 gulp.task('test:ci', ['build', 'test:node', 'test:sauce']);
 
 gulp.task('watch-test', function () {
-  gulp.watch([config.src + '/**', config.test + '/**'], ['test']);
+  gulp.watch([config.src + '/**', config.test + '/**'], ['test:node']);
 });
 
 gulp.task('default', ['watch-test']);

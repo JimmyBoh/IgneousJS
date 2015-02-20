@@ -29,7 +29,7 @@ describe('The `Class` implementation', function () {
     
   });
 
-  it('should run the `constructor` function during construction.', function(){
+  it('should run the `constructor` function during construction', function(){
     var InitTester = Class.extend({
       constructor: function () {
         this.constructorRan = true;
@@ -76,5 +76,67 @@ describe('The `Class` implementation', function () {
     grandchild.act();
     
     expect(grandchild.calls).toBe(3);
+  });
+  
+  it('should prevent access to private variables', function(){
+    
+    var privateId = '123';
+
+    var TestClass = Class.extend({
+      private: {
+        id: privateId
+      },
+      constructor: function (name) {
+        this.name = name;
+      },
+      getId: function () {
+        return this.id;
+      }
+    });
+    
+    var me = new TestClass('Jim Buck');
+    
+    expect(me.id).toBeUndefined();
+    expect(me.getId()).toBe(privateId);
+  });
+  
+  it('should provide internal set access to private variables', function(){
+    
+    var TestClass = Class.extend({
+      private: {
+        id: 'id'
+      },
+      constructor: function (name) {
+        this.name = name;
+      },
+      getId: function () {
+        return this.id;
+      },
+      setId: function (id) {
+        this.id = id;
+      }
+    });
+
+    var me = new TestClass('Jim Buck');
+
+    var directValue = 7;
+    var methodValue = 10;
+
+    me.setId(methodValue);
+    me.id = directValue;
+
+    expect(me.id).toBeUndefined();
+    expect(me.getId()).toBe(methodValue);
+  });
+  
+  it('should have a property to change the maximum number of stack traces when checking for private access', function(){
+    var defaultVal = 10;
+    var newerVal = 100;
+    
+    expect(Class.MAX_STACK_TRACE).toBe(defaultVal);
+    
+    Class.MAX_STACK_TRACE = newerVal;
+        
+    expect(Class.MAX_STACK_TRACE).toBe(newerVal);
   });
 });
