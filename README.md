@@ -62,6 +62,11 @@ console.log(kitchenLight);                       // => 1
 console.log(LightSwitch[kitchenLight]);          // => 'On';
 console.log(LightSwitch.toString(kitchenLight)); // => 'On';
 
+for(var state in LightSwitch){
+  if(kitchenLight == state) {
+    console.log('The light is ' + LightSwitch[state]);
+  }
+}
 
 var Direction = Enum.extend({
   'North': 1,
@@ -206,14 +211,21 @@ This is the same as `Class.extend`, but may be called on any class implementatio
 ## Inspired By:
 
 **Simple JavaScript Inheritance**
+
 By [John Resig][1]
+
 MIT Licensed.
+
 (Inspired by base2 and Prototype)
+
 [Blog Post][2]
  
 **TypeScript Enums**
+
 By Microsoft (et al.)
+
 [GitHub Project][3]
+
 [TypeScriptLang.org][4]
 
 ## License:

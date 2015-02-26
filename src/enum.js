@@ -27,16 +27,18 @@ Enum.extend = function (obj) {
   }
 
   // Specify the string/integer values.
-  for (var txt in obj) {
-    var val = obj[txt];
+  for (var field in obj) {
+    var txt = isNaN(field) ? field : obj[field];
+    var val = parseInt(isNaN(field) ? obj[field] : field);
 
     Object.defineProperty(newEnum, txt, {
       value: val
     });
     
+    
     Object.defineProperty(newEnum, val, {
-      enumerable: true,
-      value: txt
+      value: txt,
+      enumerable: true
     });
   }
 

@@ -22,7 +22,7 @@ describe('The `Enum` implementation', function () {
     }
 
     expect(tryExtendEnum).toThrow();
-  })
+  });
 
   it('should accept multiple strings as parameters', function () {
     var enumValues = [
@@ -56,7 +56,7 @@ describe('The `Enum` implementation', function () {
     }
   });
 
-  it('should accept an object map as parameters', function () {
+  it('should accept a simple object map as parameters', function () {
     var enumValues = {
       'North': 0,
       'South': 1,
@@ -68,6 +68,38 @@ describe('The `Enum` implementation', function () {
 
     for (var dir in enumValues) {
       expect(Direction[dir]).toBe(enumValues[dir]);
+    }
+  });
+
+  it('should allow iterating the enum values', function () {
+
+    var enumValues = {
+      'North' : 1,
+      'South' : 2,
+      'East'  : 4,
+      'West'  : 8
+    };
+
+    var Direction = Enum.extend(enumValues);
+
+    for (var dir in Direction) {
+      expect(!isNaN(dir)).toBe(true);
+    }
+  });
+
+  it('should accept an object map with any order as parameters', function () {
+    var enumValues = {
+      'North': 1,
+      2: 'South',
+      'East': 4,
+      8: 'West'
+    };
+
+    var Direction = Enum.extend(enumValues);
+
+    for (var dir in Direction) {
+      expect(isNaN(dir)).toBe(false);
+      expect(isNaN(Direction[dir])).toBe(true);
     }
   });
 
@@ -98,6 +130,22 @@ describe('The `Enum` implementation', function () {
     for (var dir in enumValues) {
       expect(Direction[dir]).toBe(enumValues[dir]);
     }
+  });
+
+  it('should not allow the enum values to change', function () {
+
+    var enumValues = {
+      'On': 1,
+      'Off': -1
+    };
+    
+    var newValue = 10;
+
+    var Switch = Enum.extend(enumValues);
+
+    Switch.On = newValue;
+
+    expect(Switch.On).toBe(enumValues.On);
   });
 
   it('should integer values to string values', function () {
