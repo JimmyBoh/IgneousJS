@@ -1,7 +1,7 @@
 {
   "name": "igneousjs",
   "main": "dist/igneous.js",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "homepage": "https://github.com/JimmyBoh/IgneousJS",
   "authors": [
@@ -21,6 +21,7 @@
     "object oriented programming"
   ],
   "ignore": [
+    ".idea",
     "node_modules",
     "bower_components",
     "spec",
