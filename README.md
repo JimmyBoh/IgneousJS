@@ -4,6 +4,8 @@ A fully featured ES5 implementation for OOP in javascript for the browser or Nod
 
 [![NPM info](https://nodei.co/npm/igneousjs.png?downloads=true)](https://www.npmjs.com/package/igneousjs)
 
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JimmyBoh/IgneousJS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/JimmyBoh/IgneousJS.svg?branch=master)](https://travis-ci.org/JimmyBoh/IgneousJS)
 
 The main goal of this library is to provide a small but powerful implementation of Object Oriented constructs in JavaScript (ES5). With ES6 on the way, this library is meant to bridge the gap by using as close to the correct syntax as possible.
@@ -12,14 +14,13 @@ The main goal of this library is to provide a small but powerful implementation 
 
 ### Node.js:
 
-```
+```sh
 npm install --save igneousjs
 ```
 
 You can then access it like so:
 
 ```js
-
 var ig = require('igneousjs'),
   Enum = ig.Enum,
   Class = ig.Class;
@@ -28,14 +29,13 @@ var ig = require('igneousjs'),
 
 var Enum = require('igneousjs/enum');
 var Class = require('igneousjs/class');
-
 ```
 
 ### Browser:
 
 #### Using Bower:
 
-```
+```sh
 bower install igneousjs --save
 ```
 
@@ -51,8 +51,7 @@ Using AMD or CommonJS? No problem, it supports all types by default! (thanks to 
 
 ### Enums:
 
-```
-
+```js
 var LightSwitch = Enum.extend('Off', 'On');
 
 var kitchenLight = LightSwitch.On;
@@ -82,13 +81,11 @@ console.log(Direction[myHeading]); // => undefined
 
 console.log(Enum.hasFlag(myHeading, Direction.North)); // => true
 console.log(Enum.hasFlag(myHeading, Direction.West));  // => false
-
 ```
 
 ### Classes:
 
-```
-
+```js
 var Polygon = Class.extend({
 
   // Class constructor, ran during instantiation.
@@ -140,12 +137,11 @@ r.sayName(); // => Hi, I am a Rectangle.
 s.sayName(); // => Hi, I am a Square.
              //    And I'm way better than a Rectangle!
 
-console.log(r.area())  // => 10			 
+console.log(r.area())  // => 10
 console.log(s.area()); // => 25
 
 console.log(s instanceof Rectangle); // => true
 console.log(r instanceof Square); // => false
-
 ```
 
 
@@ -210,23 +206,18 @@ This is the same as `Class.extend`, but may be called on any class implementatio
 
 ## Inspired By:
 
-**Simple JavaScript Inheritance**
-
+<pre>
+<strong>Simple JavaScript Inheritance</strong>
 By [John Resig][1]
-
 MIT Licensed.
-
 (Inspired by base2 and Prototype)
-
 [Blog Post][2]
- 
-**TypeScript Enums**
 
+<strong>TypeScript Enums</strong>
 By Microsoft (et al.)
-
 [GitHub Project][3]
-
 [TypeScriptLang.org][4]
+</pre>
 
 ## License:
 
