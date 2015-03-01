@@ -206,19 +206,17 @@ This is the same as `Class.extend`, but may be called on any class implementatio
 
 ## Inspired By:
 
-<p>
-<strong>Simple JavaScript Inheritance</strong>
-By [John Resig][1]
-MIT Licensed.
-(Inspired by base2 and Prototype)
-[Blog Post][2]
-</p>
-<p>
-<strong>TypeScript Enums</strong>
-By Microsoft (et al.)
-[GitHub Project][3]
-[TypeScriptLang.org][4]
-</p>
+**Simple JavaScript Inheritance**<br/>
+By [John Resig][1]<br/>
+MIT Licensed.<br/>
+(Inspired by base2 and Prototype)<br/>
+[Blog Post][2]<br/>
+
+
+**TypeScript Enums**<br/>
+By Microsoft (et al.)<br/>
+[GitHub Project][3]<br/>
+[TypeScriptLang.org][4]<br/>
 
 ## License:
 
