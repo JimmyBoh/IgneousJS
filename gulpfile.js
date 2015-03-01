@@ -14,7 +14,8 @@ var config = {
   dist: './dist',
   test: './spec',
   src: './src',
-  tmp: './tmp'
+  tmp: './tmp',
+  runBrowserTestsWithNodeVersion: 0.10
 };
 
 gulp.task('clean', function (cb) {
@@ -69,8 +70,16 @@ gulp.task('test:sauce', ['build'], function (done) {
   }, done);
 });
 
-gulp.task('test', ['build','test:node', 'test:browser']);
-gulp.task('test:ci', ['build', 'test:node', 'test:sauce']);
+gulp.task('test', ['build', 'test:node', 'test:browser']);
+
+// Only run the browser tests on Node v0.10
+//   (This speeds up the Travis builds, node 
+//    version doesn't change browser test results)
+var ciTests = ['build', 'test:node'];
+if(new Number(process.version.match(/^v(\d+\.\d+)/)[1]) == config.runBrowerTestsWithNodeVersion){
+  ciTests.push('test:sauce');
+}
+gulp.task('test:ci', ciTests);
 
 gulp.task('watch-test', function () {
   gulp.watch([config.src + '/**', config.test + '/**'], ['test:node']);
