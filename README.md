@@ -218,6 +218,13 @@ By Microsoft (et al.)<br/>
 [GitHub Project][3]<br/>
 [TypeScriptLang.org][4]<br/>
 
+## Donating
+
+Help fund this project by donating, or just buy me a beer!
+
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.svg)](https://gratipay.com/JimmyBoh/)
+
+
 ## License:
 
 See [LICENSE](https://github.com/JimmyBoh/igneous/blob/master/LICENSE) for more information.
