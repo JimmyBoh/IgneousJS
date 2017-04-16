@@ -1,5 +1,7 @@
 # IgneousJS
 
+[![Join the chat at https://gitter.im/JimmyBoh/IgneousJS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JimmyBoh/IgneousJS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A fully featured ES5 implementation for OOP in javascript for the browser or NodeJS!
 
 [![NPM info](https://nodei.co/npm/igneousjs.png?downloads=true)](https://www.npmjs.com/package/igneousjs)
